@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Task 5(JavaScript)</title>
+    <style>
+        .error
+        {
+            color:red;
+        }
+    </style>
+</head>
+<body>
+    <form align="center" action="https://www.ethnus.com" onsubmit="return validate()">
+        <p>
+            <label for="name">Name:</label>&nbsp;
+            <input type="text" id="name">&nbsp;
+            <span id="ername" class="error"></span>
+        </p>
+        <p>
+            <label for="email">Email:</label>&nbsp;
+            <input type="text" id="email">
+            <span id="ermail" class="error"></span>
+        </p>
+        <p>
+            <label for="site">Website:</label>&nbsp;
+            <input type="text" id="site">
+            <span id="ersite" class="error"></span>
+        </p>
+        <p>
+            <label for="msg">Message:</label>&nbsp;
+            <textarea name="msg" id="msg"></textarea>
+            <span id="ermsg" class="error"></span>
+        </p>
+        <input type="submit" value="Submit">
+    </form>
+    <script>
+        function validate()
+        {
+            var a=document.getElementById("name").value.length;
+            var b=document.getElementById("email").value.length;
+            var c=document.getElementById("site").value.length;
+            var d=document.getElementById("msg").value.length;
+            if(a==0 || b==0 || c==0 || d==0)
+            {
+                
+                if(a==0)
+                {
+                    document.getElementById("ername").innerHTML="This field is required";
+                    document.getElementById("name").style.borderBlock= "solid red";
+                }
+                if(b==0)
+                {
+                    document.getElementById("ermail").innerHTML="A valid email address is required";
+                    document.getElementById("mail").style.borderBlock= "solid red";
+                }
+                if(c==0)
+                {
+                    document.getElementById("ersite").innerHTML="A valid url is required";
+                    document.getElementById("site").style.borderBlock= "solid red";         
+                }
+                if(d==0)
+                {
+                    document.getElementById("ermsg").innerHTML="This field is required";
+                    document.getElementById("msg").style.borderBlock= "solid red";       
+                }
+                return false;
+            }
+            return true;
+        }
+    </script>
+</body>
+</html>
