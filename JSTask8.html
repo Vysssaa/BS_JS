@@ -1,7 +1,14 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Task 5</title>
+    <title>Task 8(JavaScript)</title>
+    <style>
+        .flag
+        {
+            color: red;
+            text-align: left;
+        }
+    </style>
 </head>
 <body style="background-image: linear-gradient(rgba(229, 234, 196, 0.849),violet);">
     <h1 style="color: blue;text-align: center;">Registration form</h1>
@@ -9,23 +16,28 @@
     <table align="center" cellspacing="7px">
         <tr>
             <th>First Name</th>
-            <td><input type="text" id="fname" name="fname" size="60%"></td>
+            <td><input type="text" name="fname" id="cfname" size="60%" onkeyup="checkstr()"></td>
+            <td id="fname" class="flag">POOR</td>
         </tr>
         <tr>
             <th>Last Name</th>
-            <td><input type="text" id="lname" name="lname" size="60%"></td>
+            <td><input type="text" name="lname" id="clname" size="60%" onkeyup="checkstr()"></td>
+            <td id="lname" class="flag">POOR</td>
         </tr>
         <tr>
             <th>Email</th>
-            <td><input type="text" id="email" name="email" size="60%"></td>
+            <td><input type="text" name="email" id="cmail" size="60%" onkeyup="checkstr()"></td>
+            <td id="email" class="flag">POOR</td>
         </tr>
         <tr>
             <th>Password</th>
-            <td><input type="password" id="pass" name="pass" size="60%"></td>
+            <td><input type="text" id="cpass" name="pass" size="60%" onkeyup="checkstr()"></td>
+            <td id="pass" class="flag">POOR</td>
         </tr>
         <tr>
             <th>Re-enter Password</th>
-            <td><input type="password" id="rpass" name="rpass" size="60%"></td>
+            <td><input type="text" id="crpass" name="rpass" size="60%" onkeyup="checkstr()"></td>
+            <td id="rpass" class="flag">POOR OR MISMATCH</td>
         </tr>
         <tr>
             <th rowspan="2">Gender</th>
@@ -36,19 +48,23 @@
         </tr>
         <tr>
             <th>Age</th>
-            <td align="left"><input type="number" id="age" name="age"></td>
+            <td align="left"><input type="number" id="cage" name="age" onkeyup="checkstr()"></td>
+            <td id="age" class="flag">POOR</td>
         </tr>
         <tr>
             <th>Phone Number</th>
-            <td align="left"><input type="number" id="phno" name="phno"></td>
+            <td align="left"><input type="number" id="cphno" name="phno" onkeyup="checkstr()"></td>
+            <td id="phno" class="flag">POOR</td>
         </tr>
         <tr>
             <th>Address</th>
-            <td align="left"><textarea id="addr" name="addr" style="height: 70px; width: 99%;"></textarea></td>
+            <td align="left"><textarea id="caddr" name="addr" style="height: 70px; width: 99%;" onkeyup="checkstr()"></textarea></td>
+            <td id="addr" class="flag">POOR</td>
         </tr>
         <tr>
             <th>State</th>
-            <td><input type="text" id="state" name="state" size="60%"></td>
+            <td><input type="text" id="cstate" name="state" size="60%" onkeyup="checkstr()"></td>
+            <td id="state" class="flag">POOR</td>
         </tr>
         <tr>
             <th>Country</th>
@@ -78,7 +94,62 @@
     <button type="submit" style="background-color: red; border-radius: 15px; font-size:22px; color: white; width: 140px; font-family: serif;">Register</button>
     </form>
     <script>
-        
+        function checkstr()
+        {
+            var fname=document.getElementById("cfname").value.length;
+            var lname=document.getElementById("clname").value.length;
+            var email=document.getElementById("cmail").value.length;
+            var pass=document.getElementById("cpass").value;
+            var rpass=document.getElementById("crpass").value;
+            var age=document.getElementById("cage").value.toString().length;
+            var phno=document.getElementById("cphno").value.toString().length;
+            var addr=document.getElementById("caddr").value.length;
+            var state=document.getElementById("cstate").value.length;
+            if(fname>=3)
+                document.getElementById("fname").innerHTML="";
+            else
+                document.getElementById("fname").innerHTML="POOR";
+            
+            if(lname>=3)
+                document.getElementById("lname").innerHTML="";
+            else
+                document.getElementById("lname").innerHTML="POOR";
+
+            if(email>=8)
+                document.getElementById("email").innerHTML="";
+            else
+                document.getElementById("email").innerHTML="POOR";
+
+            if(pass.length>=8)
+                document.getElementById("pass").innerHTML="";
+            else
+                document.getElementById("pass").innerHTML="POOR";
+
+            if(rpass.length>=8 && rpass==pass)
+                document.getElementById("rpass").innerHTML="";
+            else
+                document.getElementById("rpass").innerHTML="POOR OR MISMATCH";
+
+            if(age>0 && age<=2)
+                document.getElementById("age").innerHTML="";
+            else
+                document.getElementById("age").innerHTML="POOR";
+
+            if(phno>=10)
+                document.getElementById("phno").innerHTML="";
+            else
+                document.getElementById("phno").innerHTML="POOR";
+
+            if(addr>=15)
+                document.getElementById("addr").innerHTML="";
+            else
+                document.getElementById("addr").innerHTML="POOR";
+
+            if(state>=5)
+                document.getElementById("age").innerHTML="";
+            else
+                document.getElementById("age").innerHTML="POOR";
+        }
     </script>
 </body>
 </html>
